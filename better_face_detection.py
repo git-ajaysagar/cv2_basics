@@ -1,4 +1,4 @@
-#The following program detects faces better using caffe model with opencv dnn
+#The following program detects faces better using caffe model with opencv dnn and saves detected faces on pressing 'enter' key.
 
 # -*- coding: utf-8 -*-
 '''By Ajay'''
