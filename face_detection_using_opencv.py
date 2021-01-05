@@ -1,4 +1,4 @@
-#The following program detects faces using opencv
+#The following program detects faces using opencv and haarcascade
 
 # -*- coding: utf-8 -*-
 '''By Ajay'''
