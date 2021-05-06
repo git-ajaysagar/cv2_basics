@@ -1,3 +1,5 @@
+#for colored images only
+
 import cv2 as cv
 import argparse
 
