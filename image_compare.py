@@ -14,7 +14,7 @@ if im1.shape==im2.shape:
     print(diff)
     b,g,r=cv.split(diff)
     if cv.countNonZero(b) == 0 and cv.countNonZero(g) == 0 and cv.countNonZero(r) == 0:
-        print('images are equal')
+        print('images are same')
 else:
     print('images are different')
 
