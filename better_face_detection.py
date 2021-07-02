@@ -19,7 +19,7 @@ arguments = vars(args.parse_args())
 #importing caffe model 
 face_proto = os.path.sep.join([arguments["path"],"deploy.prototxt.txt"]) # face detection proto file
 face_caffe = os.path.sep.join([arguments["path"],"res10_300x300_ssd_iter_140000.caffemodel"])  # face detection caffe model file
-net = cv2.dnn.readNetFromCaffe(config_file, model_file)
+net = cv2.dnn.readNetFromCaffe(face_proto, face_caffe)
 
 #initiating face detection
 cap=cv2.VideoCapture(0)
