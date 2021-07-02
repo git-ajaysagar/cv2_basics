@@ -9,11 +9,16 @@ import numpy as np
 import keyboard as kb
 import os
 import time
+import argparse
+
+args = argparse.ArgumentParser()
+args.add_argument("-p", "--path", required=True, help="path to folder containing caffe and prototxt")
+args.add_argument("-c", "--confidence", type=float, default=0.7, help="minimum threshold value to detect faces")
+arguments = vars(args.parse_args())
 
 #importing caffe model 
-model_file = "C:\\Users\\Ajay\\models\\res10_300x300_ssd_iter_140000.caffemodel"
-config_file = "C:\\Users\\Ajay\\models\\deploy.prototxt"
-
+face_proto = os.path.sep.join([arguments["path"],"deploy.prototxt.txt"]) # face detection proto file
+face_caffe = os.path.sep.join([arguments["path"],"res10_300x300_ssd_iter_140000.caffemodel"])  # face detection caffe model file
 net = cv2.dnn.readNetFromCaffe(config_file, model_file)
 
 #initiating face detection
@@ -30,7 +35,7 @@ while 1:
     for i in range(faces.shape[2]):
         try:
             confidence = faces[0, 0, i, 2]
-            if confidence > 0.5:
+            if confidence > arguments["confidence"]:
                 box = faces[0, 0, i, 3:7] * np.array([w, h, w, h])
                 (x, y, x1, y1) = box.astype("int")
                 cv2.rectangle(img, (x, y), (x1, y1), (0, 0, 255), 2)
